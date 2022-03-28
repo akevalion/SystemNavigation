@@ -25,18 +25,14 @@ SystemWindow class >> layoutWindows [
 	
 	winExtent := worldExtent / extent.
 	deltaPoint := 10 @ 25.
-	windows size traceCr.
-	extent traceCr.
-	(0 to: extent x-1) do: [ :x  | 
-		(0 to: extent y-1) do: [ :y |
+	(0 to: extent y-1) do: [ :y |
+		(0 to: extent x-1) do: [ :x  |
 			| index window |
-			index := y*extent y + x + 1.
-			index traceCr.
+			index := y*extent x + x + 1.
 			(index between: 1 and: windows size) ifTrue: [ 
 				window := windows at: index.
 				window position: deltaPoint + (winExtent * ((x @ y ))).
 				window extent: winExtent.
-				window label traceCr.
 				 ].
 			 ].
 		 ]
