@@ -20,6 +20,8 @@ SystemWindow class >> layoutWindows [
 	
 	world := windows anyOne world.
 	windows := world submorphs select: [ :win | win isKindOf: SystemWindow ].
+	windows := windows reject: [ :win | win isKindOf: ClyBrowserSearchDialogWindow ].
+	windows ifEmpty: [ ^ self ].
 	extent := self defaultLineItemsCount value: windows.
 	worldExtent := windows anyOne world extent - (20 @ 50).
 	
